@@ -1,0 +1,15 @@
+.app-btn {
+    background-color: #2c8d25;
+    float: right;
+    border-radius: 4px;
+    border: none;
+    width: 20%;
+    height: 8vh;
+    font-size: 1.8vw;
+    font-family: Bahnschrift, sans-serif;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+}

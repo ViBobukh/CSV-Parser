@@ -1,0 +1,11 @@
+.users {
+    display: flex;
+    flex-direction: row;
+    background-color: steelblue;
+    border: 1px black;
+}
+
+.user {
+    display: flex;
+    justify-content: space-around;
+}

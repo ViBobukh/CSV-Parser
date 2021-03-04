@@ -1,0 +1,6 @@
+.captions {
+    display: flex;
+    background-color: steelblue;
+    border: 1px black;
+    justify-content: space-evenly;
+}
