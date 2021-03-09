@@ -1,6 +1,11 @@
 import {states} from "./shortStates";
 
-// function for change data
+/**
+ * Function for change data
+ * @param users
+ * @returns {*}
+ */
+
 export function normalizer(users) {
     return users.map((user) => {
         return {
@@ -20,6 +25,10 @@ export function normalizer(users) {
     })
 }
 
+/**
+ * @param phone
+ * @returns {string}
+ */
 function changePhone(phone) {
     phone = phone.trim();
     if (phone.startsWith('1')) {
@@ -31,12 +40,22 @@ function changePhone(phone) {
     }
 }
 
+/**
+ * @param hasChildren
+ * @returns {string}
+ */
+
 function changeHasChildren(hasChildren) {
     if (hasChildren === '') {
         hasChildren = 'FALSE'
     }
     return hasChildren;
 }
+
+/**
+ * @param licenseStates
+ * @returns {string}
+ */
 
 function changeLicenseStates(licenseStates) {
     let allStates = licenseStates.split('|');

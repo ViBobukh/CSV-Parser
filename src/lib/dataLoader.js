@@ -1,9 +1,18 @@
 import {validate} from "./validator";
 import {normalizer} from "./normaliser";
 
+/**
+ * Array with all caption
+ * @type {string[]}
+ */
 const CAPTIONS = ['fullName', 'phone', 'email', 'age', 'experience', 'yearlyIncome',
     'hasChildren', 'licenseStates', 'expirationDate', 'licenseNumber', 'id', 'duplicate'];
 
+/**
+ * Function for data treatment
+ * @param allInfo
+ * @returns {{allUsers, captions: {}}}
+ */
 function dataLoader(allInfo) {
     const captions = {};
     const allUsers = [];

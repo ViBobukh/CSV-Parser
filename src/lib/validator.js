@@ -45,7 +45,6 @@ function validateLicenseStates(licenseStates) {
 function validateExpirationDate(expirationDate) {
     const isValidFormat = expirationDate.match(/(\d{2}\/\d{2}\/\d{4})|(\d{4}-\d{2}-\d{2})/gm);
     const isValidDate = Date.now() < new Date(expirationDate).getTime();
-    console.log(Date.now(), new Date(expirationDate).getTime());
     return isValidDate && isValidFormat;
 }
 
@@ -53,6 +52,11 @@ function validateLicenseNumber(licenseNumber) {
     return licenseNumber.match(/\w{6}/gm);
 }
 
+/**
+ * Function for validate data
+ * @param users
+ * @returns {*}
+ */
 export function validate(users) {
     return users.map((user) => {
         return {
