@@ -4,11 +4,11 @@ import './App.css';
 import {useRef, useState} from "react";
 import Papa from "papaparse";
 import Table from "../Table/Table";
-import tableMaker from "../../TableMaker/tableMaker";
+import dataLoader from "../../lib/dataLoader";
 
 function App (){
     const inputFile = useRef(null);
-    const [InfoAboutUsers, changeInfoAboutUsers] = useState(null)
+    const [tableData, changeTableData] = useState(null);
     const onButtonClick = () => {
         inputFile.current.click();
     };
@@ -16,14 +16,23 @@ function App (){
     const parser = (file) => {
         Papa.parse(file, {
             complete: function(results) {
-                console.log("Finished:", results.data);
-                changeInfoAboutUsers(results.data);
+                console.log(results)
+                if(results.errors.length){
+                    alert('Chose file .csv');
+                    return;
+                }
+                const data = dataLoader(results.data);
+                if(data) {
+                    changeTableData(data);
+                } else {
+                    alert('Error');
+                }
             }
-        });
+        })
     };
 
     return (
-        <div className="body">
+        <div>
             <input type='file' id='file'
                    onChange={(event)=>{
                        let file = event.target.files[0];
@@ -33,7 +42,10 @@ function App (){
                    style={{display: 'none'}}
             />
             <button className="app-btn" onClick={onButtonClick}>Import Users</button>
-            <Table usersInfo={InfoAboutUsers ? InfoAboutUsers : []}/>
+            {tableData ? <Table usersInfo={tableData.allUsers ? tableData.allUsers : null}
+                                captions={tableData.captions ? tableData.captions : null}/> :
+                null}
+
         </div>
     );
 }

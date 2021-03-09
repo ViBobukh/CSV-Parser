@@ -1,6 +1,7 @@
-.captions {
-    display: flex;
-    background-color: steelblue;
-    border: 1px black;
-    justify-content: space-evenly;
+.caption {
+    border: 1px solid black;
+    font-family: Bahnschrift, sans-serif;
+    font-size: large;
+    background-color: #4bb3ea;
+    text-align: center;
 }

@@ -1,11 +1,10 @@
-.users {
-    display: flex;
-    flex-direction: row;
-    background-color: steelblue;
-    border: 1px black;
+.wrongCell {
+    background-color: #ea524a;
 }
 
 .user {
-    display: flex;
-    justify-content: space-around;
+    font-family: Bahnschrift, sans-serif;
+    border: 1px solid black;
+    font-size: medium;
+    text-align: center;
 }
