@@ -11,7 +11,7 @@ function validatePhone(phone) {
 }
 
 function validateEmail(email) {
-    return email.match(/\w*\@\w*\.\w*/gm);
+    return email.match(/\w*@\w*\.\w*/gm);
 }
 
 function validateAge(age) {
@@ -28,7 +28,8 @@ function validateYearlyIncome(yearlyIncome) {
 
 function validateHasChildren(hasChildren) {
     hasChildren = hasChildren.trim();
-    return hasChildren === 'TRUE' || hasChildren === 'FALSE';
+    hasChildren = hasChildren.toLowerCase();
+    return hasChildren === 'true' || hasChildren === 'false';
 }
 
 function validateLicenseStates(licenseStates) {
@@ -49,7 +50,7 @@ function validateExpirationDate(expirationDate) {
 }
 
 function validateLicenseNumber(licenseNumber) {
-    return licenseNumber.match(/\w{6}/gm);
+    return licenseNumber.match(/^\w{6}$/gm);
 }
 
 /**

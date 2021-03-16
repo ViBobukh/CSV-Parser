@@ -61,6 +61,9 @@ function changeLicenseStates(licenseStates) {
     let allStates = licenseStates.split('|');
 
     allStates = allStates.map((state) => {
+        if(state.length !== 2) {
+            state = state.toLowerCase();
+        }
         const shortName = states[state];
         return shortName || state;
     });

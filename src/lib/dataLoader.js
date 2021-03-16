@@ -1,5 +1,7 @@
 import {validate} from "./validator";
 import {normalizer} from "./normaliser";
+import findDuplicate from "./finderDuplicates";
+import createObjWithData from "./createObjWithData";
 
 /**
  * Array with all caption
@@ -30,39 +32,10 @@ function dataLoader(allInfo) {
     })
 
     // create object with data
-    for (let i = 1; i < allInfo.length; ++i) {
-        const userInfoArr = allInfo[i];
-        if (userInfoArr && userInfoArr.length === rowSize) {
-            const userInfoObject = {};
+    createObjWithData(allInfo, CAPTIONS, rowSize, allUsers);
 
-            CAPTIONS.forEach((caption, index) => {
-                if (caption === 'yearlyIncome') {
-                    userInfoArr[index] = Number(userInfoArr[index]).toFixed(2);
-                    userInfoObject[caption] = userInfoArr[index];
-                } else if ((caption === 'fullName' || caption === 'email' || caption === 'phone') &&
-                    (userInfoArr[index] === 'undefined' || userInfoArr[index] === '')) {
-                    alert('Not valid data');
-                    return;
-                } else {
-                    userInfoObject[caption] = userInfoArr[index];
-                }
-            });
-            userInfoObject.id = i;
-            userInfoObject.duplicate = '';
-
-            allUsers.push(userInfoObject);
-        }
-    }
     // Finding duplicates
-    allUsers.forEach((currentUser) => {
-        const foundDuplicate = allUsers.find((user) => {
-            return currentUser.id !== user.id &&
-                (currentUser.phone === user.phone || currentUser.email.toLowerCase() === user.email.toLowerCase());
-        });
-        if (foundDuplicate) {
-            currentUser.duplicate = foundDuplicate.id
-        }
-    })
+    findDuplicate(allUsers);
 
     return {
         captions,
